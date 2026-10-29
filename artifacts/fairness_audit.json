@@ -1,0 +1,165 @@
+{
+  "Sex": {
+    "subgroups": [
+      {
+        "group": "Female",
+        "count": 1256,
+        "positive_rate": 0.0725,
+        "selection_rate": 0.1449,
+        "recall_tpr": 0.5165,
+        "fpr": 0.1159,
+        "precision": 0.2582,
+        "roc_auc": 0.8545,
+        "brier_calibration": 0.0578
+      },
+      {
+        "group": "Male",
+        "count": 994,
+        "positive_rate": 0.1217,
+        "selection_rate": 0.1881,
+        "recall_tpr": 0.5702,
+        "fpr": 0.1352,
+        "precision": 0.369,
+        "roc_auc": 0.804,
+        "brier_calibration": 0.0909
+      }
+    ],
+    "equalized_odds_diff": 0.0538,
+    "demographic_parity_diff": 0.0432,
+    "flags": [
+      "Recall (TPR) gap exceeds 5%"
+    ]
+  },
+  "Age_Band": {
+    "subgroups": [
+      {
+        "group": "Young (18-39)",
+        "count": 305,
+        "positive_rate": 0.0131,
+        "selection_rate": 0.0033,
+        "recall_tpr": 0.0,
+        "fpr": 0.0033,
+        "precision": 0.0,
+        "roc_auc": 0.7587,
+        "brier_calibration": 0.0135
+      },
+      {
+        "group": "Middle-aged (40-59)",
+        "count": 792,
+        "positive_rate": 0.0417,
+        "selection_rate": 0.0795,
+        "recall_tpr": 0.4242,
+        "fpr": 0.0646,
+        "precision": 0.2222,
+        "roc_auc": 0.8643,
+        "brier_calibration": 0.0356
+      },
+      {
+        "group": "Older (60+)",
+        "count": 1153,
+        "positive_rate": 0.1518,
+        "selection_rate": 0.2645,
+        "recall_tpr": 0.5829,
+        "fpr": 0.2076,
+        "precision": 0.3344,
+        "roc_auc": 0.7644,
+        "brier_calibration": 0.1133
+      }
+    ],
+    "equalized_odds_diff": 0.5829,
+    "demographic_parity_diff": 0.2612,
+    "flags": [
+      "Recall (TPR) gap exceeds 5%",
+      "False Positive Rate gap exceeds 5%",
+      "Demographic parity difference exceeds 5%"
+    ]
+  },
+  "Income_Tertile": {
+    "subgroups": [
+      {
+        "group": "Lower Income",
+        "count": 508,
+        "positive_rate": 0.1457,
+        "selection_rate": 0.3268,
+        "recall_tpr": 0.6351,
+        "fpr": 0.2742,
+        "precision": 0.2831,
+        "roc_auc": 0.7618,
+        "brier_calibration": 0.1111
+      },
+      {
+        "group": "Middle Income",
+        "count": 553,
+        "positive_rate": 0.1121,
+        "selection_rate": 0.1899,
+        "recall_tpr": 0.5161,
+        "fpr": 0.1487,
+        "precision": 0.3048,
+        "roc_auc": 0.7871,
+        "brier_calibration": 0.0879
+      },
+      {
+        "group": "Upper Income",
+        "count": 1189,
+        "positive_rate": 0.0639,
+        "selection_rate": 0.0824,
+        "recall_tpr": 0.4868,
+        "fpr": 0.0548,
+        "precision": 0.3776,
+        "roc_auc": 0.8718,
+        "brier_calibration": 0.0487
+      }
+    ],
+    "equalized_odds_diff": 0.2194,
+    "demographic_parity_diff": 0.2443,
+    "flags": [
+      "Recall (TPR) gap exceeds 5%",
+      "False Positive Rate gap exceeds 5%",
+      "Demographic parity difference exceeds 5%"
+    ]
+  },
+  "Education_Group": {
+    "subgroups": [
+      {
+        "group": "High School or Less",
+        "count": 111,
+        "positive_rate": 0.1622,
+        "selection_rate": 0.3423,
+        "recall_tpr": 0.6111,
+        "fpr": 0.2903,
+        "precision": 0.2895,
+        "roc_auc": 0.7996,
+        "brier_calibration": 0.1125
+      },
+      {
+        "group": "Some College",
+        "count": 1140,
+        "positive_rate": 0.1088,
+        "selection_rate": 0.2035,
+        "recall_tpr": 0.5806,
+        "fpr": 0.1575,
+        "precision": 0.3103,
+        "roc_auc": 0.8141,
+        "brier_calibration": 0.0834
+      },
+      {
+        "group": "College Graduate",
+        "count": 999,
+        "positive_rate": 0.0701,
+        "selection_rate": 0.0991,
+        "recall_tpr": 0.4714,
+        "fpr": 0.071,
+        "precision": 0.3333,
+        "roc_auc": 0.8484,
+        "brier_calibration": 0.0554
+      }
+    ],
+    "equalized_odds_diff": 0.2193,
+    "demographic_parity_diff": 0.2432,
+    "flags": [
+      "Recall (TPR) gap exceeds 5%",
+      "False Positive Rate gap exceeds 5%",
+      "Demographic parity difference exceeds 5%"
+    ]
+  }
+}

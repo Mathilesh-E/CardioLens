@@ -1,0 +1,375 @@
+{
+  "HighBP": {
+    "name": "HighBP",
+    "label": "High Blood Pressure",
+    "group": "Clinical",
+    "type": "binary",
+    "min": 0,
+    "max": 1,
+    "step": 1,
+    "default": 0,
+    "modifiable": true,
+    "description": "Ever diagnosed with high blood pressure by a doctor or health professional.",
+    "value_labels": {
+      "0": "Normal Blood Pressure",
+      "1": "High Blood Pressure"
+    },
+    "glossary": "Hypertension places chronic strain on arterial walls, accelerating coronary plaque formation."
+  },
+  "HighChol": {
+    "name": "HighChol",
+    "label": "High Blood Cholesterol",
+    "group": "Clinical",
+    "type": "binary",
+    "min": 0,
+    "max": 1,
+    "step": 1,
+    "default": 0,
+    "modifiable": true,
+    "description": "Ever told by a doctor or health provider that blood cholesterol is high.",
+    "value_labels": {
+      "0": "Normal Cholesterol",
+      "1": "High Cholesterol"
+    },
+    "glossary": "Elevated low-density lipoproteins (LDL) directly contribute to coronary atherogenesis."
+  },
+  "CholCheck": {
+    "name": "CholCheck",
+    "label": "Cholesterol Check in Past 5 Years",
+    "group": "Clinical",
+    "type": "binary",
+    "min": 0,
+    "max": 1,
+    "step": 1,
+    "default": 1,
+    "modifiable": true,
+    "description": "Had a cholesterol check performed within the past five years.",
+    "value_labels": {
+      "0": "No Check in 5 Years",
+      "1": "Checked within 5 Years"
+    },
+    "glossary": "Regular cholesterol screening is a marker of preventive cardiovascular maintenance."
+  },
+  "BMI": {
+    "name": "BMI",
+    "label": "Body Mass Index (BMI)",
+    "group": "Clinical",
+    "type": "continuous",
+    "min": 12.0,
+    "max": 60.0,
+    "step": 0.5,
+    "default": 27.0,
+    "modifiable": true,
+    "description": "Body mass index in kg/m\u00b2, calculated from height and weight.",
+    "value_labels": {},
+    "glossary": "BMI > 25 indicates overweight; > 30 indicates obesity, which strains myocardial workload."
+  },
+  "Smoker": {
+    "name": "Smoker",
+    "label": "Smoking History",
+    "group": "Lifestyle",
+    "type": "binary",
+    "min": 0,
+    "max": 1,
+    "step": 1,
+    "default": 0,
+    "modifiable": true,
+    "description": "Smoked at least 100 cigarettes in entire life.",
+    "value_labels": {
+      "0": "Non-Smoker (<100 cigs)",
+      "1": "Smoker (\u2265100 cigs)"
+    },
+    "glossary": "Tobacco combustion releases toxins that promote endothelial dysfunction and vasospasm."
+  },
+  "Stroke": {
+    "name": "Stroke",
+    "label": "History of Stroke",
+    "group": "Clinical",
+    "type": "binary",
+    "min": 0,
+    "max": 1,
+    "step": 1,
+    "default": 0,
+    "modifiable": false,
+    "description": "Ever told by a medical doctor that you had a stroke.",
+    "value_labels": {
+      "0": "No Prior Stroke",
+      "1": "Prior Stroke History"
+    },
+    "glossary": "Stroke indicates advanced systemic cerebrovascular atherosclerosis, highly correlated with coronary disease."
+  },
+  "Diabetes": {
+    "name": "Diabetes",
+    "label": "Diabetes Diagnosis",
+    "group": "Clinical",
+    "type": "ordinal",
+    "min": 0,
+    "max": 2,
+    "step": 1,
+    "default": 0,
+    "modifiable": true,
+    "description": "Self-reported diagnosis of diabetes or prediabetes.",
+    "value_labels": {
+      "0": "No Diabetes",
+      "1": "Prediabetes",
+      "2": "Diabetes"
+    },
+    "glossary": "Hyperglycemia damages micro- and macro-vasculature, doubling coronary heart disease risk."
+  },
+  "PhysActivity": {
+    "name": "PhysActivity",
+    "label": "Physical Activity (Past 30 Days)",
+    "group": "Lifestyle",
+    "type": "binary",
+    "min": 0,
+    "max": 1,
+    "step": 1,
+    "default": 1,
+    "modifiable": true,
+    "description": "Any physical activity or exercise during the past 30 days other than regular job.",
+    "value_labels": {
+      "0": "No Exercise / Inactive",
+      "1": "Active in Past 30 Days"
+    },
+    "glossary": "Cardiorespiratory exercise enhances myocardial perfusion and improves vascular compliance."
+  },
+  "Fruits": {
+    "name": "Fruits",
+    "label": "Daily Fruit Consumption",
+    "group": "Lifestyle",
+    "type": "binary",
+    "min": 0,
+    "max": 1,
+    "step": 1,
+    "default": 1,
+    "modifiable": true,
+    "description": "Consumes fruit 1 or more times per day.",
+    "value_labels": {
+      "0": "Less than 1/day",
+      "1": "1 or more times/day"
+    },
+    "glossary": "Dietary antioxidants and polyphenols support healthy vascular endothelium."
+  },
+  "Veggies": {
+    "name": "Veggies",
+    "label": "Daily Vegetable Consumption",
+    "group": "Lifestyle",
+    "type": "binary",
+    "min": 0,
+    "max": 1,
+    "step": 1,
+    "default": 1,
+    "modifiable": true,
+    "description": "Consumes vegetables 1 or more times per day.",
+    "value_labels": {
+      "0": "Less than 1/day",
+      "1": "1 or more times/day"
+    },
+    "glossary": "Dietary fiber and nitrates in vegetables contribute to arterial blood pressure reduction."
+  },
+  "HvyAlcoholConsump": {
+    "name": "HvyAlcoholConsump",
+    "label": "Heavy Alcohol Consumption",
+    "group": "Lifestyle",
+    "type": "binary",
+    "min": 0,
+    "max": 1,
+    "step": 1,
+    "default": 0,
+    "modifiable": true,
+    "description": "Adult men >14 drinks/week; adult women >7 drinks/week.",
+    "value_labels": {
+      "0": "Moderate / None",
+      "1": "Heavy Drinker"
+    },
+    "glossary": "Chronic heavy ethanol consumption induces toxic alcoholic cardiomyopathy and hypertension."
+  },
+  "AnyHealthcare": {
+    "name": "AnyHealthcare",
+    "label": "Health Care Coverage",
+    "group": "Access",
+    "type": "binary",
+    "min": 0,
+    "max": 1,
+    "step": 1,
+    "default": 1,
+    "modifiable": false,
+    "description": "Has any kind of health care coverage (insurance, prepaid plans, Medicare).",
+    "value_labels": {
+      "0": "No Insurance",
+      "1": "Insured / Covered"
+    },
+    "glossary": "Insurance coverage dictates access to routine preventive cardiological management."
+  },
+  "NoDocbcCost": {
+    "name": "NoDocbcCost",
+    "label": "Could Not Afford Doctor",
+    "group": "Access",
+    "type": "binary",
+    "min": 0,
+    "max": 1,
+    "step": 1,
+    "default": 0,
+    "modifiable": false,
+    "description": "Was there a time in the past 12 months when you needed to see a doctor but could not because of cost?",
+    "value_labels": {
+      "0": "No Financial Barrier",
+      "1": "Delayed Care Due to Cost"
+    },
+    "glossary": "Cost barriers frequently cause unmonitored hypertension and missed therapeutic interventions."
+  },
+  "GenHlth": {
+    "name": "GenHlth",
+    "label": "General Health Rating",
+    "group": "Wellbeing",
+    "type": "ordinal",
+    "min": 1,
+    "max": 5,
+    "step": 1,
+    "default": 2,
+    "modifiable": false,
+    "description": "Would you say that in general your health is: 1=Excellent, 2=Very good, 3=Good, 4=Fair, 5=Poor.",
+    "value_labels": {
+      "1": "Excellent",
+      "2": "Very Good",
+      "3": "Good",
+      "4": "Fair",
+      "5": "Poor"
+    },
+    "glossary": "Self-rated general health is one of the strongest epidemiological predictors of mortality."
+  },
+  "MentHlth": {
+    "name": "MentHlth",
+    "label": "Poor Mental Health Days",
+    "group": "Wellbeing",
+    "type": "continuous",
+    "min": 0,
+    "max": 30,
+    "step": 1,
+    "default": 0,
+    "modifiable": false,
+    "description": "Now thinking about your mental health, how many days during the past 30 days was your mental health not good?",
+    "value_labels": {},
+    "glossary": "Chronic emotional stress elevates autonomic sympathetic tone and circulating cortisol."
+  },
+  "PhysHlth": {
+    "name": "PhysHlth",
+    "label": "Poor Physical Health Days",
+    "group": "Wellbeing",
+    "type": "continuous",
+    "min": 0,
+    "max": 30,
+    "step": 1,
+    "default": 0,
+    "modifiable": false,
+    "description": "Now thinking about your physical health, how many days during the past 30 days was your physical health not good?",
+    "value_labels": {},
+    "glossary": "Frequent poor physical health reflects underlying multisystem morbidity and functional decline."
+  },
+  "DiffWalk": {
+    "name": "DiffWalk",
+    "label": "Difficulty Walking / Climbing Stairs",
+    "group": "Wellbeing",
+    "type": "binary",
+    "min": 0,
+    "max": 1,
+    "step": 1,
+    "default": 0,
+    "modifiable": false,
+    "description": "Do you have serious difficulty walking or climbing stairs?",
+    "value_labels": {
+      "0": "No Mobility Limitation",
+      "1": "Severe Difficulty Walking"
+    },
+    "glossary": "Severe mobility impairment correlates with advanced cardiovascular deconditioning and frailty."
+  },
+  "Sex": {
+    "name": "Sex",
+    "label": "Biological Sex",
+    "group": "Demographics",
+    "type": "binary",
+    "min": 0,
+    "max": 1,
+    "step": 1,
+    "default": 0,
+    "modifiable": false,
+    "description": "Biological sex recorded in survey.",
+    "value_labels": {
+      "0": "Female",
+      "1": "Male"
+    },
+    "glossary": "Males exhibit earlier onset of coronary artery disease, whereas females catch up post-menopause."
+  },
+  "Age": {
+    "name": "Age",
+    "label": "Age Category",
+    "group": "Demographics",
+    "type": "ordinal",
+    "min": 1,
+    "max": 13,
+    "step": 1,
+    "default": 8,
+    "modifiable": false,
+    "description": "Thirteen-level age category (1 = 18-24 ... 13 = 80+).",
+    "value_labels": {
+      "1": "18-24",
+      "2": "25-29",
+      "3": "30-34",
+      "4": "35-39",
+      "5": "40-44",
+      "6": "45-49",
+      "7": "50-54",
+      "8": "55-59",
+      "9": "60-64",
+      "10": "65-69",
+      "11": "70-74",
+      "12": "75-79",
+      "13": "80 or older"
+    },
+    "glossary": "Chronological age is the non-modifiable driver of cumulative vascular exposure and arterial stiffness."
+  },
+  "Education": {
+    "name": "Education",
+    "label": "Highest Education Level",
+    "group": "Demographics",
+    "type": "ordinal",
+    "min": 1,
+    "max": 6,
+    "step": 1,
+    "default": 5,
+    "modifiable": false,
+    "description": "Education level completed (1 = Never/Kindergarten ... 6 = College 4+ years).",
+    "value_labels": {
+      "1": "Never attended / Kindergarten",
+      "2": "Elementary (Grades 1-8)",
+      "3": "Some High School (Grades 9-11)",
+      "4": "High School Graduate (Grade 12)",
+      "5": "Some College / Technical School",
+      "6": "College Graduate (4+ years)"
+    },
+    "glossary": "Educational attainment is a fundamental social determinant of health literacy and lifestyle options."
+  },
+  "Income": {
+    "name": "Income",
+    "label": "Household Income Bracket",
+    "group": "Demographics",
+    "type": "ordinal",
+    "min": 1,
+    "max": 8,
+    "step": 1,
+    "default": 7,
+    "modifiable": false,
+    "description": "Annual household income bracket from all sources.",
+    "value_labels": {
+      "1": "< $10,000",
+      "2": "$10,000 - $14,999",
+      "3": "$15,000 - $19,999",
+      "4": "$20,000 - $24,999",
+      "5": "$25,000 - $34,999",
+      "6": "$35,000 - $49,999",
+      "7": "$50,000 - $74,999",
+      "8": "\u2265 $75,000"
+    },
+    "glossary": "Socioeconomic standing determines nutrition quality, neighborhood safety, and chronic stress exposure."
+  }
+}

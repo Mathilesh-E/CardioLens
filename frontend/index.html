@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulseIQ: Cardiovascular Intelligence & Explainable AI Suite</title>
+  <meta name="description" content="Precision cardiovascular risk intelligence, interactive epidemiological slicers, real-time SHAP attributions, counterfactual planners, and subgroup disparity auditing.">
+  
+  <link rel="stylesheet" href="/styles/main.css">
+  <!-- Pinned D3.js v7 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+</head>
+<body>
+  <div class="noise-overlay"></div>
+
+  <!-- Accessibility Live Region for Screen Readers -->
+  <div id="aria-risk-announcer" class="sr-only" aria-live="polite" style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(1px,1px,1px,1px);"></div>
+
+  <div id="app-container">
+    <!-- Slim Left Navigation Rail -->
+    <aside class="nav-rail" aria-label="Main Navigation">
+      <div class="nav-logo" title="PulseIQ" id="nav-logo-btn">PIQ</div>
+      <nav class="nav-items">
+        <button class="nav-btn active" data-section="dashboard" aria-label="Analytics Dashboard" title="Analytics Dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+          <span class="nav-tooltip">Analytics Dashboard</span>
+        </button>
+        <button class="nav-btn" data-section="risk-lab" aria-label="Risk Calculator" title="Risk Calculator">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <span class="nav-tooltip">Risk Calculator</span>
+        </button>
+        <button class="nav-btn" data-section="compare" aria-label="What-If Action Plans" title="What-If Action Plans">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+          <span class="nav-tooltip">What-If Action Plans</span>
+        </button>
+        <button class="nav-btn" data-section="cohorts" aria-label="Population Simulator" title="Population Simulator">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="nav-tooltip">Population Simulator</span>
+        </button>
+        <button class="nav-btn" data-section="patient-map" aria-label="Patient Map" title="Patient Map">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24M14.83 14.83l4.24 4.24M14.83 9.17l4.24-4.24M4.93 19.07l4.24-4.24"/></svg>
+          <span class="nav-tooltip">Patient Map & Clusters</span>
+        </button>
+        <button class="nav-btn" data-section="global-insights" aria-label="Top Risk Factors" title="Top Risk Factors">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          <span class="nav-tooltip">Top Risk Factors</span>
+        </button>
+        <button class="nav-btn" data-section="model-arena" aria-label="Model Comparison" title="Model Comparison">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+          <span class="nav-tooltip">Model Comparison</span>
+        </button>
+        <button class="nav-btn" data-section="fairness" aria-label="Fairness Audit" title="Fairness Audit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg>
+          <span class="nav-tooltip">Fairness & Equality Check</span>
+        </button>
+        <button class="nav-btn" data-section="explorer" aria-label="Data Explorer" title="Data Explorer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span class="nav-tooltip">Data Explorer</span>
+        </button>
+        <button class="nav-btn" data-section="batch" aria-label="Batch Patient Scoring" title="Batch Patient Scoring">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+          <span class="nav-tooltip">Batch Patient Scoring</span>
+        </button>
+        <button class="nav-btn" data-section="guided-story" aria-label="Guided Story" title="Guided Story">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+          <span class="nav-tooltip">Interactive Story</span>
+        </button>
+        <button class="nav-btn" data-section="methodology" aria-label="Methodology" title="Methodology & Model Card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <span class="nav-tooltip">About Data & Models</span>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-workspace">
+      <!-- Top Header Bar -->
+      <header class="top-header">
+        <div class="header-left">
+          <div class="app-title-group">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <h2>PulseIQ</h2>
+              <div class="vitals-ticker">
+                <span class="cardiac-bpm-heart">❤️</span>
+                <span id="vital-bpm-val">74</span>
+                <span style="font-size:10px; color:var(--text-muted); letter-spacing:0.04em;">BPM • NSR</span>
+              </div>
+              <span class="kpi-badge badge-green" style="font-size:10px; font-weight:700;"><span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:#10B981; box-shadow:0 0 6px #10B981; margin-right:4px;"></span>LIVE AI ENGINE</span>
+            </div>
+            <div class="subtitle">Cardiovascular Intelligence & Explainable AI • CDC BRFSS 2015</div>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Model Selector -->
+          <select id="model-select" class="chip-btn" style="border-radius:8px; padding:6px 12px; font-weight:600; outline:none; cursor:pointer;" aria-label="Model Selector"></select>
+
+
+          <!-- Command Palette Trigger -->
+          <button class="cmd-trigger" id="cmd-trigger" aria-label="Open Command Palette">
+            <span>Commands</span>
+            <span class="kbd-badge">Ctrl K</span>
+          </button>
+
+          <!-- Theme Toggle -->
+          <button class="btn-icon" id="theme-toggle-btn" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+
+          <!-- Client-Side PDF Export Button -->
+          <button class="btn-icon" id="btn-print-report" onclick="window.print()" title="Export Report PDF" aria-label="Print or Export PDF">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- High-Tech Landing Hero Banner -->
+      <section class="hero-section" id="hero-banner">
+        <div class="hero-content">
+          <div>
+            <div class="hero-tag">Cardiovascular Intelligence & Explainable AI</div>
+            <h1 class="hero-title font-display">Clear, Understandable Heart Disease Risk AI</h1>
+            <p class="hero-subtitle">
+              Interactive AI platform trained on 253,680 real CDC health survey records. 
+              Explore population health patterns, calculate personal 10-year heart risk, see the exact lifestyle factors behind every prediction, test positive health actions, and audit AI fairness.
+            </p>
+            <div class="hero-actions">
+              <button class="btn-primary" id="hero-cta-dash">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+                <span>Analytics Dashboard</span>
+              </button>
+              <button class="btn-secondary" id="hero-cta-lab">
+                <span>Patient Risk Lab</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+              <button class="btn-secondary" id="hero-cta-story">
+                <span>Interactive Story</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Hero Bento Stats Box with Animated ECG Canvas -->
+          <div class="hero-stats-box">
+            <div class="ecg-canvas-container">
+              <canvas id="ecg-canvas"></canvas>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
+              <div class="stat-item">
+                <div class="stat-number mono" id="counter-records">0</div>
+                <div class="stat-label">BRFSS Records</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number mono" id="counter-features">0</div>
+                <div class="stat-label">Biomarkers</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number mono" id="counter-auc">0.000</div>
+                <div class="stat-label">Model ROC-AUC</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- SECTION 0: PREMIER INTERACTIVE ANALYTICS DASHBOARD                   -->
+      <!-- ==================================================================== -->
+      <section class="studio-section" id="section-dashboard">
+        <div class="section-header">
+          <h2 class="section-title">Heart Health & Risk Analytics Dashboard</h2>
+          <p class="section-desc">Interactive population filters, real-time health statistics, health condition overlaps, and real patient profiles powered by CDC health survey records.</p>
+        </div>
+
+        <!-- Dashboard Sub-Tabs -->
+        <div class="dashboard-subtabs">
+          <button class="dash-tab-btn active" data-dash-tab="overview">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <span>Population Overview & Filters</span>
+          </button>
+          <button class="dash-tab-btn" data-dash-tab="comorbidities">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+            <span>Health Conditions Overlap</span>
+          </button>
+          <button class="dash-tab-btn" data-dash-tab="disparities">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 16v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v1"/><path d="M18 8h4a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-4"/></svg>
+            <span>Demographics & Fair Access</span>
+          </button>
+        </div>
+
+        <!-- Interactive Slicers & Filter Controls Bar -->
+        <div class="slicers-panel">
+          <div class="slicers-header">
+            <div class="slicers-header-title">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+              <span>Interactive Patient Group Filters</span>
+            </div>
+            <button class="preset-chip" id="btn-reset-slicers" style="background:rgba(239, 68, 68, 0.15); color:#EF4444; border-color:rgba(239, 68, 68, 0.3);">↺ Reset All Filters</button>
+          </div>
+
+          <!-- Quick Scenario Presets -->
+          <div class="preset-chips">
+            <span style="font-size:11px; color:var(--text-muted); align-self:center; font-weight:700; margin-right:4px;">PRESETS:</span>
+            <button class="preset-chip" data-preset-filter="all">⚡ National Sample (15,000)</button>
+            <button class="preset-chip" data-preset-filter="hypertensive-seniors">⚡ Seniors with High Blood Pressure (65+)</button>
+            <button class="preset-chip" data-preset-filter="metabolic">⚡ Higher Weight & High Cholesterol</button>
+            <button class="preset-chip" data-preset-filter="young-active">⚡ Active Young Adults (18-39)</button>
+            <button class="preset-chip" data-preset-filter="smokers-hbp">⚡ Smokers with Low Exercise & High BP</button>
+            <button class="preset-chip" data-preset-filter="low-income">⚡ Lower Income Health Factors</button>
+          </div>
+
+          <!-- Comprehensive Dropdown Slicers Grid -->
+          <div class="slicers-grid">
+            <div class="slicer-control">
+              <label class="slicer-label">Age Bracket</label>
+              <select id="slicer-age" class="slicer-select">
+                <option value="all">All Ages (18-80+)</option>
+                <option value="young">Young Adults (18-39)</option>
+                <option value="mid">Middle-Aged (40-54)</option>
+                <option value="older">Older Adults (55-64)</option>
+                <option value="senior">Seniors (65+)</option>
+              </select>
+            </div>
+
+            <div class="slicer-control">
+              <label class="slicer-label">Biological Sex</label>
+              <select id="slicer-sex" class="slicer-select">
+                <option value="all">All Sexes</option>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+              </select>
+            </div>
+
+            <div class="slicer-control">
+              <label class="slicer-label">Blood Pressure</label>
+              <select id="slicer-hbp" class="slicer-select">
+                <option value="all">All Individuals</option>
+                <option value="1">Hypertension Diagnosed</option>
+                <option value="0">Normal Pressure</option>
+              </select>
+            </div>
+
+            <div class="slicer-control">
+              <label class="slicer-label">High Cholesterol</label>
+              <select id="slicer-chol" class="slicer-select">
+                <option value="all">All Individuals</option>
+                <option value="1">Elevated Cholesterol</option>
+                <option value="0">Normal Cholesterol</option>
+              </select>
+            </div>
+
+            <div class="slicer-control">
+              <label class="slicer-label">Smoking Status</label>
+              <select id="slicer-smoke" class="slicer-select">
+                <option value="all">All Individuals</option>
+                <option value="1">Current / Ever Smoker</option>
+                <option value="0">Non-Smoker</option>
+              </select>
+            </div>
+
+            <div class="slicer-control">
+              <label class="slicer-label">Diabetes Status</label>
+              <select id="slicer-diab" class="slicer-select">
+                <option value="all">All Individuals</option>
+                <option value="diabetic">Diabetic Diagnosed</option>
+                <option value="0">Non-Diabetic</option>
+              </select>
+            </div>
+
+            <div class="slicer-control">
+              <label class="slicer-label">Physical Activity</label>
+              <select id="slicer-act" class="slicer-select">
+                <option value="all">All Individuals</option>
+                <option value="1">Physically Active</option>
+                <option value="0">Sedentary Lifestyle</option>
+              </select>
+            </div>
+
+            <div class="slicer-control">
+              <label class="slicer-label">General Health</label>
+              <select id="slicer-genhlth" class="slicer-select">
+                <option value="all">All Health Tiers</option>
+                <option value="good">Excellent / Good</option>
+                <option value="poor">Fair / Poor Condition</option>
+              </select>
+            </div>
+
+            <div class="slicer-control">
+              <label class="slicer-label">Prior Stroke History</label>
+              <select id="slicer-stroke" class="slicer-select">
+                <option value="all">All History</option>
+                <option value="1">Prior Stroke Diagnosed</option>
+                <option value="0">No Prior Stroke</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 Dynamic Real-Time KPI Metric Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-top">
+              <span class="kpi-label">Selected Group Size</span>
+              <div class="kpi-icon">👥</div>
+            </div>
+            <div class="kpi-value mono" id="kpi-dash-size">15,000</div>
+            <span class="kpi-badge badge-cyan" id="kpi-dash-fraction">100% of Sample</span>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-top">
+              <span class="kpi-label">Actual Heart Disease Rate</span>
+              <div class="kpi-icon">🩺</div>
+            </div>
+            <div class="kpi-value mono" id="kpi-dash-obs">9.4%</div>
+            <span class="kpi-badge badge-amber" id="kpi-dash-ci">95% CI: [8.9% - 9.9%]</span>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-top">
+              <span class="kpi-label">AI Predicted Risk</span>
+              <div class="kpi-icon">⚡</div>
+            </div>
+            <div class="kpi-value mono" id="kpi-dash-model">9.5%</div>
+            <span class="kpi-badge badge-green" id="kpi-dash-tier">Standard Risk</span>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-top">
+              <span class="kpi-label">Risk vs National Average</span>
+              <div class="kpi-icon">📈</div>
+            </div>
+            <div class="kpi-value mono" id="kpi-dash-rel">1.00×</div>
+            <span class="kpi-badge badge-cyan" id="kpi-dash-baseline">vs Baseline 9.4%</span>
+          </div>
+
+          <div class="kpi-card kpi-alert">
+            <div class="kpi-top">
+              <span class="kpi-label">High-Risk Individuals</span>
+              <div class="kpi-icon">⚠️</div>
+            </div>
+            <div class="kpi-value mono" id="kpi-dash-highcount">1,413</div>
+            <span class="kpi-badge badge-red" id="kpi-dash-highpct">Above 0.20 Threshold</span>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-top">
+              <span class="kpi-label">Top Health Factor</span>
+              <div class="kpi-icon">🧬</div>
+            </div>
+            <div class="kpi-value" style="font-size:20px;" id="kpi-dash-driver">GenHlth</div>
+            <span class="kpi-badge badge-cyan" id="kpi-dash-drivershap">+0.38 Impact</span>
+          </div>
+        </div>
+
+        <!-- Dashboard Charts Bento Grid -->
+        <div class="bento-grid">
+          <!-- Chart 1: Risk Probability Distribution -->
+          <div class="bento-card col-6">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Risk Distribution vs National Average</div>
+                <div class="how-to-read">Cyan bars = selected group; shaded grey = nationwide average (15,000 records)</div>
+              </div>
+            </div>
+            <div class="card-body" id="dash-chart-distribution"></div>
+          </div>
+
+          <!-- Chart 2: Age Bracket Stratification -->
+          <div class="bento-card col-6">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Heart Disease Rates by Age Group</div>
+                <div class="how-to-read">Coral = survey observed rate; green = AI predicted probability</div>
+              </div>
+            </div>
+            <div class="card-body" id="dash-chart-age"></div>
+          </div>
+
+          <!-- Chart 3: Comorbidity Burden Ring -->
+          <div class="bento-card col-4">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Combined Health Factors per Person</div>
+                <div class="how-to-read">Overlap of blood pressure, cholesterol, smoking, diabetes, and stroke history</div>
+              </div>
+            </div>
+            <div class="card-body" id="dash-chart-donut"></div>
+          </div>
+
+          <!-- Chart 4: Cohort Distinctive SHAP Tornado -->
+          <div class="bento-card col-8">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Top Risk Factors for this Group</div>
+                <div class="how-to-read">Cyan/Green bars show group factors; amber line marks nationwide mean</div>
+              </div>
+            </div>
+            <div class="card-body" id="dash-chart-tornado"></div>
+          </div>
+
+          <!-- Live Matching Cohort Patients Data Table -->
+          <div class="bento-card col-12">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Real Patients from CDC Survey Data</div>
+                <div class="how-to-read">Sample of real patients from this slice with calibrated predictions and direct test drill-down</div>
+              </div>
+              <button class="chip-btn" id="btn-export-cohort-csv" style="background:var(--primary-light); color:var(--primary-deep); font-weight:700;">
+                📥 Export Cohort Slice (CSV)
+              </button>
+            </div>
+            <div class="card-body" style="overflow-x:auto;">
+              <div id="dash-patients-table-container"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- SECTION 1: RISK LAB (HERO TOOL)                                      -->
+      <!-- ==================================================================== -->
+      <section class="studio-section" id="section-risk-lab" style="display:none;">
+        <div class="section-header">
+          <h2 class="section-title">Risk Lab: Personal Heart Risk Calculator</h2>
+          <p class="section-desc">Adjust health habits and clinical measurements to see real-time 10-year heart disease risk and the exact reasons behind it.</p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Left Column: Sticky 21 Controls -->
+          <div class="bento-card col-4 sticky-sidebar">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Patient Health Profile (21 Factors)</div>
+                <div class="how-to-read">Modify values or pick a quick profile to calculate risk</div>
+              </div>
+            </div>
+
+            <!-- Profile Presets -->
+            <div class="profile-presets">
+              <button class="preset-btn" data-lab-preset="healthy">⚡ Healthy (30yo)</button>
+              <button class="preset-btn" data-lab-preset="typical">⚡ Middle-Aged (45yo)</button>
+              <button class="preset-btn" data-lab-preset="hypertensive">⚡ High BP (62yo)</button>
+              <button class="preset-btn" data-lab-preset="critical">⚡ High Risk (72yo)</button>
+            </div>
+
+            <div class="card-body" id="controls-container">
+              <!-- Dynamically populated by controls.js -->
+            </div>
+          </div>
+
+          <!-- Right Column: Live Visualizations -->
+          <div class="col-8" style="display:flex; flex-direction:column; gap:20px;">
+            <!-- Top Row: Radial Gauge & Waterfall -->
+            <div style="display:grid; grid-template-columns:1fr 1.6fr; gap:20px;">
+              <!-- Radial Risk Gauge Bento Card -->
+              <div class="bento-card">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title">Estimated 10-Year Heart Risk</div>
+                    <div class="how-to-read">AI risk estimate with 90% confidence range</div>
+                  </div>
+                </div>
+                <div class="card-body gauge-hero-container">
+                  <div id="gauge-chart"></div>
+                  <div class="risk-stat-grid">
+                    <div>
+                      <div class="risk-stat-num mono" id="stat-percentile">--th</div>
+                      <div class="risk-stat-lbl">Percentile</div>
+                    </div>
+                    <div>
+                      <div class="risk-stat-num mono" id="stat-decision" style="font-size:13px;">--</div>
+                      <div class="risk-stat-lbl">Risk Category</div>
+                    </div>
+                    <div>
+                      <div class="risk-stat-num mono" id="stat-latency">-- ms</div>
+                      <div class="risk-stat-lbl">Response Time</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Live SHAP Waterfall Bento Card -->
+              <div class="bento-card">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title">Risk Factor Breakdown</div>
+                    <div class="how-to-read">How each personal health factor adds to or lowers your risk</div>
+                  </div>
+                </div>
+                <div class="card-body" id="waterfall-chart"></div>
+              </div>
+            </div>
+
+            <!-- Evidence Force Bar -->
+            <div class="bento-card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Risk Balance: Factors Raising Risk vs Helping Heart</div>
+                  <div class="how-to-read">Red bars increase predicted risk; green bars show protective health habits</div>
+                </div>
+              </div>
+              <div class="card-body" id="force-bar-chart" style="min-height:auto;"></div>
+            </div>
+
+            <!-- Risk Fingerprint Radar & Narrative -->
+            <div style="display:grid; grid-template-columns:1fr 1.2fr; gap:20px;">
+              <!-- Radar Chart Card -->
+              <div class="bento-card">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title">Health Profile Overview</div>
+                    <div class="how-to-read">Your profile (cyan) compared to average adults (dotted)</div>
+                  </div>
+                </div>
+                <div class="card-body" id="radar-chart"></div>
+              </div>
+
+              <!-- Auto-Generated Narrative Card -->
+              <div class="bento-card">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title">Summary & Health Insights</div>
+                    <div class="how-to-read">Plain-language summary of primary risk drivers</div>
+                  </div>
+                </div>
+                <div class="card-body" style="display:flex; flex-direction:column; justify-content:center;">
+                  <div class="narrative-card" id="risk-narrative-text">Loading patient risk narrative...</div>
+                  <div style="margin-top:14px; display:flex; gap:10px;">
+                    <button class="btn-primary" id="btn-explain-lime" style="padding:8px 18px; font-size:12px; font-weight:800; border-radius:10px; display:inline-flex; align-items:center; gap:8px;">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m12 6 4 6h-8l4-6z"/></svg>
+                      <span>Explain with LIME (Local Surrogate)</span>
+                    </button>
+                    <span style="font-size:11px; color:var(--text-muted); align-self:center;">Runs 1,000 local permutations (~1s)</span>
+                  </div>
+                  <div id="lime-result-box" style="margin-top:10px; font-size:12px;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sensitivity ICE & 2D What-If Heatmap -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+              <div class="bento-card">
+                <div class="card-header" style="flex-direction:column; align-items:stretch; gap:10px;">
+                  <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div>
+                      <div class="card-title">Single Factor Sensitivity Curve</div>
+                      <div class="how-to-read">See how changing one health factor changes total risk</div>
+                    </div>
+                  </div>
+                  <div>
+                    <select id="sensitivity-feat-select" class="slicer-select" style="width:100%; font-weight:700; font-size:12px;"></select>
+                  </div>
+                </div>
+                <div class="card-body" id="sensitivity-chart"></div>
+              </div>
+
+              <div class="bento-card">
+                <div class="card-header" style="flex-direction:column; align-items:stretch; gap:10px;">
+                  <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div>
+                      <div class="card-title">Two-Factor Risk Matrix</div>
+                      <div class="how-to-read">Click any cell to test both lifestyle values together</div>
+                    </div>
+                  </div>
+                  <div style="display:grid; grid-template-columns:1fr auto 1fr; gap:6px; align-items:center;">
+                    <select id="whatif2d-f1-select" class="slicer-select" style="font-size:11px; font-weight:700;"></select>
+                    <span style="font-size:13px; font-weight:800; color:var(--text-muted); text-align:center;">&times;</span>
+                    <select id="whatif2d-f2-select" class="slicer-select" style="font-size:11px; font-weight:700;"></select>
+                  </div>
+                </div>
+                <div class="card-body" id="whatif2d-chart"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- SECTION 2: COMPARE & COUNTERFACTUALS                                 -->
+      <!-- ==================================================================== -->
+      <section class="studio-section" id="section-compare" style="display:none;">
+        <div class="section-header">
+          <h2 class="section-title">What-If Action Plans & Lifestyle Goals</h2>
+          <p class="section-desc">Find the most effective step-by-step lifestyle changes and medical actions to lower heart disease risk below 20%.</p>
+        </div>
+
+        <div class="bento-grid">
+          <div class="bento-card col-4">
+            <div class="card-header">
+              <div class="card-title">Target & Goal Settings</div>
+            </div>
+            <div class="card-body" style="display:flex; flex-direction:column; gap:14px;">
+              <div>
+                <label style="font-weight:700; font-size:12px; color:var(--text-main); margin-bottom:6px; display:block;">Optimization Target:</label>
+                <select id="cf-target-mode" class="slicer-select" style="width:100%;">
+                  <option value="below_threshold">Bring Risk Below 20% Threshold</option>
+                  <option value="custom">Target 10% Absolute Risk</option>
+                </select>
+              </div>
+              <button class="btn-primary" id="btn-generate-cf" style="margin-top:8px;">Generate Interventions</button>
+            </div>
+          </div>
+
+          <div class="bento-card col-8">
+            <div class="card-header">
+              <div class="card-title">Recommended Action Plans (Ranked by Impact)</div>
+              <div class="how-to-read">Prioritizes fewest realistic changes achieving target risk drop</div>
+            </div>
+            <div class="card-body" id="cf-plans-container">
+              <div style="padding:24px; text-align:center; color:var(--text-muted);">Click "Generate Interventions" to compute optimal pathways for current profile.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- SECTION 3: COHORT STUDIO & SIMULATOR                                 -->
+      <!-- ==================================================================== -->
+      <section class="studio-section" id="section-cohorts" style="display:none;">
+        <div class="section-header">
+          <h2 class="section-title">Population Simulator & Group Analysis</h2>
+          <p class="section-desc">Filter survey groups to see disease rates, or simulate community-wide health programs to see lives saved per 1,000 adults.</p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Cohort Query Builder -->
+          <div class="bento-card col-6">
+            <div class="card-header">
+              <div class="card-title">Custom Group Filter</div>
+            </div>
+            <div class="card-body" style="display:flex; flex-direction:column; gap:12px;">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                <div>
+                  <label style="font-size:12px; font-weight:700; color:var(--text-main); margin-bottom:4px; display:block;">Minimum Age Bracket:</label>
+                  <input type="number" id="cohort-age-min" class="slicer-select" value="7" min="1" max="13" style="width:100%;">
+                </div>
+                <div>
+                  <label style="font-size:12px; font-weight:700; color:var(--text-main); margin-bottom:4px; display:block;">Blood Pressure Status:</label>
+                  <select id="cohort-hbp-select" class="slicer-select" style="width:100%;">
+                    <option value="all">All Individuals</option>
+                    <option value="1">High Blood Pressure Only (HighBP=1)</option>
+                    <option value="0">Normal Blood Pressure Only (HighBP=0)</option>
+                  </select>
+                </div>
+              </div>
+              <button class="btn-primary" id="btn-run-cohort" style="align-self:flex-start;">Analyze Group</button>
+              <div id="cohort-results-box" style="margin-top:12px;"></div>
+            </div>
+          </div>
+
+          <!-- Population What-If Simulator -->
+          <div class="bento-card col-6">
+            <div class="card-header">
+              <div class="card-title">Community Health Simulator</div>
+              <div class="how-to-read">Simulate community-wide health shifts and cases saved per 1,000 adults</div>
+            </div>
+            <div class="card-body" style="display:flex; flex-direction:column; gap:10px;">
+              <div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                  <label style="font-size:12px; font-weight:700;">Smoking Prevalence Reduction (%):</label>
+                  <span class="mono" id="sim-smoke-val" style="color:var(--primary-deep); font-weight:800; font-size:12px;">25%</span>
+                </div>
+                <input type="range" class="clinical-range-slider" id="sim-smoke-pct" min="0" max="100" value="25" step="5">
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                  <label style="font-size:12px; font-weight:700;">Physical Activity Increase (%):</label>
+                  <span class="mono" id="sim-act-val" style="color:var(--primary-deep); font-weight:800; font-size:12px;">30%</span>
+                </div>
+                <input type="range" class="clinical-range-slider" id="sim-act-pct" min="0" max="100" value="30" step="5">
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                  <label style="font-size:12px; font-weight:700;">Population Average BMI Reduction (points):</label>
+                  <span class="mono" id="sim-bmi-val" style="color:var(--primary-deep); font-weight:800; font-size:12px;">1.5 pts</span>
+                </div>
+                <input type="range" class="clinical-range-slider" id="sim-bmi-pts" min="0" max="6" value="1.5" step="0.5">
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                  <label style="font-size:12px; font-weight:700;">High Blood Pressure Control Rate (%):</label>
+                  <span class="mono" id="sim-hbp-val" style="color:var(--primary-deep); font-weight:800; font-size:12px;">30%</span>
+                </div>
+                <input type="range" class="clinical-range-slider" id="sim-hbp-pct" min="0" max="100" value="30" step="5">
+              </div>
+              <button class="btn-primary" id="btn-run-sim" style="align-self:flex-start; margin-top:6px;">Run Simulation</button>
+              <div id="sim-result-box" style="margin-top:12px;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- SECTION 4: PATIENT MAP (2D SHAP MANIFOLD)                            -->
+      <!-- ==================================================================== -->
+      <section class="studio-section" id="section-patient-map" style="display:none;">
+        <div class="section-header">
+          <h2 class="section-title">Patient Map: Health Patterns & Similar Patients</h2>
+          <p class="section-desc">Interactive map of 2,250 real test patients grouped by similar health factors. Click any dot to inspect their profile.</p>
+        </div>
+
+        <div class="bento-grid">
+          <div class="bento-card col-8">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Interactive Patient Map</div>
+                <div class="how-to-read">Scroll to zoom; drag to pan; click any dot to load patient into Risk Lab</div>
+              </div>
+              <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+                <button class="chip-btn map-color-btn active" data-mode="risk">Color: Risk</button>
+                <button class="chip-btn map-color-btn" data-mode="actual">True Event</button>
+                <button class="chip-btn map-color-btn" data-mode="cluster">Cluster Group</button>
+                <button class="chip-btn" id="btn-place-profile" style="background:var(--primary-deep); color:#FFF; font-weight:800;">📍 Place My Profile</button>
+                <button class="chip-btn" id="btn-reset-map-view" style="font-size:11px;" title="Reset Zoom and Pan">↺ Reset View</button>
+              </div>
+            </div>
+            <div class="card-body" style="height:480px; position:relative;">
+              <canvas id="patient-map-canvas" style="width:100%; height:100%;"></canvas>
+            </div>
+          </div>
+
+          <div class="bento-card col-4">
+            <div class="card-header">
+              <div class="card-title">Common Patient Health Profiles</div>
+              <div class="how-to-read">Natural health clusters identified in the population</div>
+            </div>
+            <div class="card-body" id="phenotypes-list" style="overflow-y:auto; max-height:460px;">
+              <!-- Populated by app.js -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- SECTION 5: GLOBAL INSIGHTS (SHAP)                                    -->
+      <!-- ==================================================================== -->
+      <section class="studio-section" id="section-global-insights" style="display:none;">
+        <div class="section-header">
+          <h2 class="section-title">Global Insights: Most Influential Health Factors</h2>
+          <p class="section-desc">See which health habits and biological factors have the largest impact on heart disease across the entire population.</p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Beeswarm Plot -->
+          <div class="bento-card col-8">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Overall Factor Impact Across Patients</div>
+                <div class="how-to-read">Each dot is a patient; position shows risk impact; color shows factor level (red=high, teal=low)</div>
+              </div>
+            </div>
+            <div class="card-body" id="global-beeswarm-chart"></div>
+          </div>
+
+          <!-- SHAP Dendrogram -->
+          <div class="bento-card col-4">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Related Health Factors Tree</div>
+                <div class="how-to-read">Groups features that frequently occur together</div>
+              </div>
+            </div>
+            <div class="card-body" id="dendrogram-chart"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- SECTION 6: MODEL ARENA                                               -->
+      <!-- ==================================================================== -->
+      <section class="studio-section" id="section-model-arena" style="display:none;">
+        <div class="section-header">
+          <h2 class="section-title">Model Arena: AI Model Comparison & Tuning</h2>
+          <p class="section-desc">Compare LightGBM, XGBoost, Random Forest, and Logistic Regression on verified CDC test records with interactive decision slider.</p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Threshold Slider Card -->
+          <div class="bento-card col-12">
+            <div class="card-header">
+              <div class="card-title">Decision Cutoff & Alert Tuning</div>
+              <div class="how-to-read">Drag threshold slider to balance catching more cases vs avoiding false alarms</div>
+            </div>
+            <div class="card-body" style="display:flex; flex-direction:column; gap:16px;">
+              <div style="display:flex; align-items:center; gap:20px;">
+                <span style="font-weight:700; font-size:13px;">Threshold: <span class="mono" id="arena-thresh-val" style="color:var(--primary-deep); font-size:16px;">0.20</span></span>
+                <input type="range" id="arena-thresh-slider" class="clinical-range-slider" min="0.05" max="0.60" step="0.01" value="0.20" style="flex-grow:1;">
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;">
+                <div class="bento-card" style="padding:12px;">
+                  <div class="stat-number mono" id="arena-precision" style="font-size:24px;">--%</div>
+                  <div class="stat-label">Alert Accuracy (Precision)</div>
+                </div>
+                <div class="bento-card" style="padding:12px;">
+                  <div class="stat-number mono" id="arena-recall" style="font-size:24px;">--%</div>
+                  <div class="stat-label">True Cases Caught (Recall)</div>
+                </div>
+                <div class="bento-card" style="padding:12px;">
+                  <div class="stat-number mono" id="arena-f1" style="font-size:24px;">--</div>
+                  <div class="stat-label">Overall Balance Score (F1)</div>
+                </div>
+              </div>
+              <div id="arena-sentence" style="font-size:13px; color:var(--text-muted); font-style:italic;"></div>
+            </div>
+          </div>
+
+          <!-- ROC and PR Curves -->
+          <div class="bento-card col-12">
+            <div class="card-header">
+              <div class="card-title">Accuracy Curves: Diagnostic Performance (ROC & PR)</div>
+            </div>
+            <div class="card-body" id="roc-pr-container"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- SECTION 7: FAIRNESS AUDIT                                            -->
+      <!-- ==================================================================== -->
+      <section class="studio-section" id="section-fairness" style="display:none;">
+        <div class="section-header">
+          <h2 class="section-title">AI Fairness & Demographic Equality Check</h2>
+          <p class="section-desc">Verify that the AI performs equitably across biological sex, age brackets, income levels, and education levels.</p>
+        </div>
+
+        <div class="bento-grid" id="fairness-cards-container">
+          <!-- Populated by app.js -->
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- SECTION 8: DATA EXPLORER                                             -->
+      <!-- ==================================================================== -->
+      <section class="studio-section" id="section-explorer" style="display:none;">
+        <div class="section-header">
+          <h2 class="section-title">Data Explorer: CDC Survey Statistics & Correlations</h2>
+          <p class="section-desc">Explore official CDC heart disease rates across different health categories with 95% confidence intervals and pairwise correlations.</p>
+        </div>
+
+        <div class="bento-grid">
+          <div class="bento-card col-12">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Prevalence Rates by Survey Feature</div>
+                <div class="how-to-read">Confidence intervals calculated over stratified 15,000-row representative dataset</div>
+              </div>
+              <select id="explorer-feat-select" class="chip-btn"></select>
+            </div>
+            <div class="card-body" id="explorer-table-container"></div>
+          </div>
+
+          <!-- Interactive Spearman Correlation Matrix -->
+          <div class="bento-card col-12" style="margin-top:10px;">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Interactive Health Feature Correlation Matrix (21 Factors)</div>
+                <div class="how-to-read">Hover over cells to view relationships between different health indicators</div>
+              </div>
+            </div>
+            <div class="card-body" id="explorer-corr-container"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- SECTION 9: BATCH SCORING                                             -->
+      <!-- ==================================================================== -->
+      <section class="studio-section" id="section-batch" style="display:none;">
+        <div class="section-header">
+          <h2 class="section-title">Batch Patient Scoring</h2>
+          <p class="section-desc">Upload a CSV spreadsheet of patient health factors or score pre-loaded demo profiles with AI predictions and key risk drivers.</p>
+        </div>
+
+        <div class="bento-grid">
+          <div class="bento-card col-12" id="batch-drop-zone" style="border:2px dashed var(--border-color); padding:40px; text-align:center; cursor:pointer;">
+            <div style="font-size:32px; margin-bottom:8px;">📁</div>
+            <div style="font-size:15px; font-weight:600;">Drag and Drop CSV File Here, or Click to Browse</div>
+            <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">Must contain the 21 standard health columns. Up to 5,000 rows. No data is stored server-side.</div>
+            <input type="file" id="batch-file-input" accept=".csv" style="display:none;">
+          </div>
+
+          <div class="col-12" id="batch-results-container"></div>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- SECTION 10: GUIDED STORY WALKTHROUGH                                 -->
+      <!-- ==================================================================== -->
+      <section class="studio-section" id="section-guided-story" style="display:none;">
+        <div class="section-header">
+          <h2 class="section-title">Guided Story: Heart Health AI Walkthrough</h2>
+          <p class="section-desc">A guided 8-step journey through the data, model mechanics, explainability trade-offs, and clinical limits.</p>
+        </div>
+
+        <div id="guided-story-container">
+          <!-- Populated by guided_story.js -->
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- SECTION 11: METHODOLOGY & MODEL CARD                                 -->
+      <!-- ==================================================================== -->
+      <section class="studio-section" id="section-methodology" style="display:none;">
+        <div class="section-header">
+          <h2 class="section-title">Methodology & Dataset Facts</h2>
+          <p class="section-desc">Formal documentation of dataset provenance, preprocessing, model training, calibration strategy, and safety guidelines.</p>
+        </div>
+
+        <div class="bento-grid">
+          <div class="bento-card col-8">
+            <div class="card-header">
+              <div class="card-title">System Architecture & Pipeline Provenance</div>
+            </div>
+            <div class="card-body" style="font-size:13px; line-height:1.7; display:flex; flex-direction:column; gap:12px;">
+              <p><strong>Dataset:</strong> CDC Behavioral Risk Factor Surveillance System (BRFSS 2015), 253,680 survey records across 21 features plus target (HeartDiseaseorAttack, 9.42% positive prevalence).</p>
+              <p><strong>Sampling & Splitting:</strong> Stratified 15,000-row representative cohort partitioned into 70% Train (10,500), 15% Validation (2,250), and 15% Test (2,250), preserving exact 9.42% class balance across all subsets.</p>
+              <p><strong>Model Suite:</strong> Primary LightGBM with cost-sensitive weighting (scale_pos_weight=9.62) and validation early stopping, alongside XGBoost, Random Forest (class_weight balanced), and Standardized Logistic Regression.</p>
+              <p><strong>Calibration:</strong> Prefit isotonic regression applied on validation set to transform raw margin outputs into true empirical posterior probabilities (Brier score loss: ~0.067).</p>
+              <p><strong>Uncertainty:</strong> 30-member bootstrap ensemble generating 5th-95th percentile risk confidence intervals.</p>
+            </div>
+          </div>
+
+          <div class="bento-card col-4">
+            <div class="card-header">
+              <div class="card-title" style="color:var(--risk-crit);">Crucial Safety & Data Limitations</div>
+            </div>
+            <div class="card-body" style="font-size:12px; line-height:1.6; display:flex; flex-direction:column; gap:10px;">
+              <div style="background:var(--bg-surface-subtle); padding:10px; border-radius:6px;">
+                <strong>1. Observational Survey Data:</strong>
+                All data is observational from 2015. Projections represent statistical associations, NOT clinical guarantees.
+              </div>
+              <div style="background:var(--bg-surface-subtle); padding:10px; border-radius:6px;">
+                <strong>2. Self-Reported Responses:</strong>
+                Diagnoses of hypertension, diabetes, and smoking status are self-reported by survey respondents.
+              </div>
+              <div style="background:var(--bg-surface-subtle); padding:10px; border-radius:6px;">
+                <strong>3. Educational Research Prototype:</strong>
+                PulseIQ is strictly an educational research tool and does not replace medical advice from a licensed physician.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Persistent Footer -->
+      <footer class="app-footer">
+        <div style="padding:24px 36px; border-top:1px solid var(--border-color); color:var(--text-muted); font-size:12px; display:flex; justify-content:space-between; align-items:center;">
+          <div><strong>PulseIQ:</strong> Cardiovascular Intelligence & Explainable AI. Built on CDC BRFSS 2015. Educational research prototype.</div>
+          <div>All numbers derived from real trained models & test datasets.</div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Command Palette Modal Backdrop -->
+  <div class="cmd-modal-backdrop" id="cmd-backdrop">
+    <div class="cmd-modal">
+      <div class="cmd-input-bar">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" class="cmd-input" id="cmd-input" placeholder="Type a command or jump to section...">
+      </div>
+      <div class="cmd-list" id="cmd-list"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Application Entry Script (ES Module) -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1962 @@
+{
+  "true_positive": {
+    "index": 177,
+    "title": "True Positive (Confirmed Risk)",
+    "profile": {
+      "HighBP": 1.0,
+      "HighChol": 1.0,
+      "CholCheck": 1.0,
+      "BMI": 32.0,
+      "Smoker": 1.0,
+      "Stroke": 1.0,
+      "Diabetes": 0.0,
+      "PhysActivity": 0.0,
+      "Fruits": 1.0,
+      "Veggies": 1.0,
+      "HvyAlcoholConsump": 0.0,
+      "AnyHealthcare": 1.0,
+      "NoDocbcCost": 0.0,
+      "GenHlth": 4.0,
+      "MentHlth": 0.0,
+      "PhysHlth": 0.0,
+      "DiffWalk": 1.0,
+      "Sex": 0.0,
+      "Age": 13.0,
+      "Education": 4.0,
+      "Income": 7.0
+    },
+    "actual": 1,
+    "probability": 0.6667,
+    "prediction": 1,
+    "threshold": 0.2,
+    "shap_explanation": [
+      {
+        "feature": "GenHlth",
+        "value": 4.0,
+        "contribution": 0.2516
+      },
+      {
+        "feature": "Stroke",
+        "value": 1.0,
+        "contribution": 0.1483
+      },
+      {
+        "feature": "Age",
+        "value": 13.0,
+        "contribution": 0.1186
+      },
+      {
+        "feature": "HighBP",
+        "value": 1.0,
+        "contribution": 0.0584
+      },
+      {
+        "feature": "DiffWalk",
+        "value": 1.0,
+        "contribution": 0.0487
+      },
+      {
+        "feature": "HighChol",
+        "value": 1.0,
+        "contribution": 0.026
+      },
+      {
+        "feature": "Smoker",
+        "value": 1.0,
+        "contribution": 0.024
+      },
+      {
+        "feature": "Sex",
+        "value": 0.0,
+        "contribution": -0.0233
+      },
+      {
+        "feature": "PhysActivity",
+        "value": 0.0,
+        "contribution": 0.0054
+      },
+      {
+        "feature": "Diabetes",
+        "value": 0.0,
+        "contribution": -0.0049
+      },
+      {
+        "feature": "AnyHealthcare",
+        "value": 1.0,
+        "contribution": 0.0015
+      },
+      {
+        "feature": "Income",
+        "value": 7.0,
+        "contribution": 0.0015
+      },
+      {
+        "feature": "PhysHlth",
+        "value": 0.0,
+        "contribution": -0.0011
+      },
+      {
+        "feature": "Veggies",
+        "value": 1.0,
+        "contribution": 0.001
+      },
+      {
+        "feature": "NoDocbcCost",
+        "value": 0.0,
+        "contribution": -0.0009
+      },
+      {
+        "feature": "BMI",
+        "value": 32.0,
+        "contribution": -0.0008
+      },
+      {
+        "feature": "Education",
+        "value": 4.0,
+        "contribution": 0.0003
+      },
+      {
+        "feature": "Fruits",
+        "value": 1.0,
+        "contribution": 0.0001
+      },
+      {
+        "feature": "CholCheck",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "HvyAlcoholConsump",
+        "value": 0.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "MentHlth",
+        "value": 0.0,
+        "contribution": 0.0
+      }
+    ],
+    "lime_explanation": [
+      {
+        "feature": "GenHlth",
+        "value": 4.0,
+        "contribution": 0.1149
+      },
+      {
+        "feature": "Stroke",
+        "value": 1.0,
+        "contribution": 0.1104
+      },
+      {
+        "feature": "Age",
+        "value": 13.0,
+        "contribution": 0.0755
+      },
+      {
+        "feature": "HighBP",
+        "value": 1.0,
+        "contribution": 0.0541
+      },
+      {
+        "feature": "HighChol",
+        "value": 1.0,
+        "contribution": 0.0316
+      },
+      {
+        "feature": "DiffWalk",
+        "value": 1.0,
+        "contribution": 0.0267
+      },
+      {
+        "feature": "Sex",
+        "value": 0.0,
+        "contribution": -0.0239
+      },
+      {
+        "feature": "Smoker",
+        "value": 1.0,
+        "contribution": 0.0215
+      },
+      {
+        "feature": "BMI",
+        "value": 32.0,
+        "contribution": -0.0078
+      },
+      {
+        "feature": "NoDocbcCost",
+        "value": 0.0,
+        "contribution": -0.0067
+      },
+      {
+        "feature": "Fruits",
+        "value": 1.0,
+        "contribution": 0.0058
+      },
+      {
+        "feature": "PhysHlth",
+        "value": 0.0,
+        "contribution": 0.0039
+      },
+      {
+        "feature": "Education",
+        "value": 4.0,
+        "contribution": -0.0013
+      },
+      {
+        "feature": "MentHlth",
+        "value": 0.0,
+        "contribution": 0.0011
+      },
+      {
+        "feature": "Diabetes",
+        "value": 0.0,
+        "contribution": 0.0007
+      },
+      {
+        "feature": "Income",
+        "value": 7.0,
+        "contribution": 0.0006
+      },
+      {
+        "feature": "HvyAlcoholConsump",
+        "value": 0.0,
+        "contribution": 0.0004
+      },
+      {
+        "feature": "CholCheck",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "PhysActivity",
+        "value": 0.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "Veggies",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "AnyHealthcare",
+        "value": 1.0,
+        "contribution": 0.0
+      }
+    ]
+  },
+  "true_negative": {
+    "index": 842,
+    "title": "True Negative (Healthy Baseline)",
+    "profile": {
+      "HighBP": 0.0,
+      "HighChol": 1.0,
+      "CholCheck": 1.0,
+      "BMI": 30.0,
+      "Smoker": 1.0,
+      "Stroke": 0.0,
+      "Diabetes": 0.0,
+      "PhysActivity": 0.0,
+      "Fruits": 1.0,
+      "Veggies": 1.0,
+      "HvyAlcoholConsump": 0.0,
+      "AnyHealthcare": 0.0,
+      "NoDocbcCost": 0.0,
+      "GenHlth": 1.0,
+      "MentHlth": 0.0,
+      "PhysHlth": 0.0,
+      "DiffWalk": 0.0,
+      "Sex": 0.0,
+      "Age": 6.0,
+      "Education": 4.0,
+      "Income": 8.0
+    },
+    "actual": 0,
+    "probability": 0.0,
+    "prediction": 0,
+    "threshold": 0.2,
+    "shap_explanation": [
+      {
+        "feature": "GenHlth",
+        "value": 1.0,
+        "contribution": -0.2016
+      },
+      {
+        "feature": "Age",
+        "value": 6.0,
+        "contribution": -0.1298
+      },
+      {
+        "feature": "HighBP",
+        "value": 0.0,
+        "contribution": -0.103
+      },
+      {
+        "feature": "Sex",
+        "value": 0.0,
+        "contribution": -0.047
+      },
+      {
+        "feature": "HighChol",
+        "value": 1.0,
+        "contribution": 0.0281
+      },
+      {
+        "feature": "Income",
+        "value": 8.0,
+        "contribution": -0.0169
+      },
+      {
+        "feature": "Smoker",
+        "value": 1.0,
+        "contribution": 0.0111
+      },
+      {
+        "feature": "Diabetes",
+        "value": 0.0,
+        "contribution": -0.008
+      },
+      {
+        "feature": "DiffWalk",
+        "value": 0.0,
+        "contribution": -0.0054
+      },
+      {
+        "feature": "Stroke",
+        "value": 0.0,
+        "contribution": -0.0053
+      },
+      {
+        "feature": "MentHlth",
+        "value": 0.0,
+        "contribution": -0.0039
+      },
+      {
+        "feature": "PhysActivity",
+        "value": 0.0,
+        "contribution": 0.0033
+      },
+      {
+        "feature": "NoDocbcCost",
+        "value": 0.0,
+        "contribution": -0.0026
+      },
+      {
+        "feature": "PhysHlth",
+        "value": 0.0,
+        "contribution": -0.0015
+      },
+      {
+        "feature": "BMI",
+        "value": 30.0,
+        "contribution": 0.0011
+      },
+      {
+        "feature": "Veggies",
+        "value": 1.0,
+        "contribution": 0.0006
+      },
+      {
+        "feature": "AnyHealthcare",
+        "value": 0.0,
+        "contribution": 0.0005
+      },
+      {
+        "feature": "Education",
+        "value": 4.0,
+        "contribution": 0.0001
+      },
+      {
+        "feature": "CholCheck",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "Fruits",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "HvyAlcoholConsump",
+        "value": 0.0,
+        "contribution": 0.0
+      }
+    ],
+    "lime_explanation": [
+      {
+        "feature": "Stroke",
+        "value": 0.0,
+        "contribution": -0.0974
+      },
+      {
+        "feature": "GenHlth",
+        "value": 1.0,
+        "contribution": -0.081
+      },
+      {
+        "feature": "Age",
+        "value": 6.0,
+        "contribution": -0.0606
+      },
+      {
+        "feature": "HighBP",
+        "value": 0.0,
+        "contribution": -0.0465
+      },
+      {
+        "feature": "HighChol",
+        "value": 1.0,
+        "contribution": 0.0263
+      },
+      {
+        "feature": "Sex",
+        "value": 0.0,
+        "contribution": -0.0219
+      },
+      {
+        "feature": "Smoker",
+        "value": 1.0,
+        "contribution": 0.0176
+      },
+      {
+        "feature": "DiffWalk",
+        "value": 0.0,
+        "contribution": -0.0163
+      },
+      {
+        "feature": "NoDocbcCost",
+        "value": 0.0,
+        "contribution": -0.0095
+      },
+      {
+        "feature": "Income",
+        "value": 8.0,
+        "contribution": -0.0081
+      },
+      {
+        "feature": "MentHlth",
+        "value": 0.0,
+        "contribution": 0.0056
+      },
+      {
+        "feature": "BMI",
+        "value": 30.0,
+        "contribution": -0.0042
+      },
+      {
+        "feature": "PhysHlth",
+        "value": 0.0,
+        "contribution": -0.0037
+      },
+      {
+        "feature": "Diabetes",
+        "value": 0.0,
+        "contribution": -0.0033
+      },
+      {
+        "feature": "Fruits",
+        "value": 1.0,
+        "contribution": -0.002
+      },
+      {
+        "feature": "Education",
+        "value": 4.0,
+        "contribution": 0.002
+      },
+      {
+        "feature": "HvyAlcoholConsump",
+        "value": 0.0,
+        "contribution": 0.0001
+      },
+      {
+        "feature": "CholCheck",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "PhysActivity",
+        "value": 0.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "Veggies",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "AnyHealthcare",
+        "value": 0.0,
+        "contribution": 0.0
+      }
+    ]
+  },
+  "false_negative": {
+    "index": 1084,
+    "title": "False Negative (Missed Detection)",
+    "profile": {
+      "HighBP": 0.0,
+      "HighChol": 0.0,
+      "CholCheck": 1.0,
+      "BMI": 20.0,
+      "Smoker": 1.0,
+      "Stroke": 0.0,
+      "Diabetes": 0.0,
+      "PhysActivity": 1.0,
+      "Fruits": 0.0,
+      "Veggies": 1.0,
+      "HvyAlcoholConsump": 0.0,
+      "AnyHealthcare": 1.0,
+      "NoDocbcCost": 0.0,
+      "GenHlth": 1.0,
+      "MentHlth": 0.0,
+      "PhysHlth": 30.0,
+      "DiffWalk": 0.0,
+      "Sex": 0.0,
+      "Age": 10.0,
+      "Education": 6.0,
+      "Income": 8.0
+    },
+    "actual": 1,
+    "probability": 0.0047,
+    "prediction": 0,
+    "threshold": 0.2,
+    "shap_explanation": [
+      {
+        "feature": "GenHlth",
+        "value": 1.0,
+        "contribution": -0.1918
+      },
+      {
+        "feature": "HighBP",
+        "value": 0.0,
+        "contribution": -0.1261
+      },
+      {
+        "feature": "Age",
+        "value": 10.0,
+        "contribution": 0.1016
+      },
+      {
+        "feature": "Sex",
+        "value": 0.0,
+        "contribution": -0.0587
+      },
+      {
+        "feature": "PhysHlth",
+        "value": 30.0,
+        "contribution": 0.0469
+      },
+      {
+        "feature": "Smoker",
+        "value": 1.0,
+        "contribution": 0.0347
+      },
+      {
+        "feature": "HighChol",
+        "value": 0.0,
+        "contribution": -0.0186
+      },
+      {
+        "feature": "Income",
+        "value": 8.0,
+        "contribution": -0.0152
+      },
+      {
+        "feature": "Stroke",
+        "value": 0.0,
+        "contribution": -0.0067
+      },
+      {
+        "feature": "MentHlth",
+        "value": 0.0,
+        "contribution": -0.0057
+      },
+      {
+        "feature": "DiffWalk",
+        "value": 0.0,
+        "contribution": -0.0039
+      },
+      {
+        "feature": "Diabetes",
+        "value": 0.0,
+        "contribution": -0.0022
+      },
+      {
+        "feature": "BMI",
+        "value": 20.0,
+        "contribution": -0.0017
+      },
+      {
+        "feature": "NoDocbcCost",
+        "value": 0.0,
+        "contribution": -0.001
+      },
+      {
+        "feature": "PhysActivity",
+        "value": 1.0,
+        "contribution": -0.0005
+      },
+      {
+        "feature": "Education",
+        "value": 6.0,
+        "contribution": -0.0004
+      },
+      {
+        "feature": "Fruits",
+        "value": 0.0,
+        "contribution": -0.0001
+      },
+      {
+        "feature": "Veggies",
+        "value": 1.0,
+        "contribution": -0.0001
+      },
+      {
+        "feature": "CholCheck",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "HvyAlcoholConsump",
+        "value": 0.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "AnyHealthcare",
+        "value": 1.0,
+        "contribution": 0.0
+      }
+    ],
+    "lime_explanation": [
+      {
+        "feature": "Stroke",
+        "value": 0.0,
+        "contribution": -0.0907
+      },
+      {
+        "feature": "GenHlth",
+        "value": 1.0,
+        "contribution": -0.0803
+      },
+      {
+        "feature": "HighBP",
+        "value": 0.0,
+        "contribution": -0.05
+      },
+      {
+        "feature": "Sex",
+        "value": 0.0,
+        "contribution": -0.0291
+      },
+      {
+        "feature": "HighChol",
+        "value": 0.0,
+        "contribution": -0.0265
+      },
+      {
+        "feature": "Age",
+        "value": 10.0,
+        "contribution": 0.0231
+      },
+      {
+        "feature": "DiffWalk",
+        "value": 0.0,
+        "contribution": -0.02
+      },
+      {
+        "feature": "Smoker",
+        "value": 1.0,
+        "contribution": 0.0174
+      },
+      {
+        "feature": "Income",
+        "value": 8.0,
+        "contribution": -0.0073
+      },
+      {
+        "feature": "PhysHlth",
+        "value": 30.0,
+        "contribution": 0.0058
+      },
+      {
+        "feature": "Diabetes",
+        "value": 0.0,
+        "contribution": -0.0048
+      },
+      {
+        "feature": "Fruits",
+        "value": 0.0,
+        "contribution": -0.0047
+      },
+      {
+        "feature": "NoDocbcCost",
+        "value": 0.0,
+        "contribution": 0.0029
+      },
+      {
+        "feature": "HvyAlcoholConsump",
+        "value": 0.0,
+        "contribution": -0.0023
+      },
+      {
+        "feature": "BMI",
+        "value": 20.0,
+        "contribution": 0.0015
+      },
+      {
+        "feature": "Education",
+        "value": 6.0,
+        "contribution": 0.0009
+      },
+      {
+        "feature": "CholCheck",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "PhysActivity",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "Veggies",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "AnyHealthcare",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "MentHlth",
+        "value": 0.0,
+        "contribution": -0.0
+      }
+    ]
+  },
+  "false_positive": {
+    "index": 89,
+    "title": "False Positive (High Risk Alarm)",
+    "profile": {
+      "HighBP": 1.0,
+      "HighChol": 1.0,
+      "CholCheck": 1.0,
+      "BMI": 21.0,
+      "Smoker": 1.0,
+      "Stroke": 0.0,
+      "Diabetes": 2.0,
+      "PhysActivity": 1.0,
+      "Fruits": 0.0,
+      "Veggies": 1.0,
+      "HvyAlcoholConsump": 0.0,
+      "AnyHealthcare": 1.0,
+      "NoDocbcCost": 1.0,
+      "GenHlth": 4.0,
+      "MentHlth": 0.0,
+      "PhysHlth": 12.0,
+      "DiffWalk": 1.0,
+      "Sex": 1.0,
+      "Age": 11.0,
+      "Education": 2.0,
+      "Income": 5.0
+    },
+    "actual": 0,
+    "probability": 0.6667,
+    "prediction": 1,
+    "threshold": 0.2,
+    "shap_explanation": [
+      {
+        "feature": "GenHlth",
+        "value": 4.0,
+        "contribution": 0.2311
+      },
+      {
+        "feature": "Age",
+        "value": 11.0,
+        "contribution": 0.1214
+      },
+      {
+        "feature": "HighBP",
+        "value": 1.0,
+        "contribution": 0.0936
+      },
+      {
+        "feature": "DiffWalk",
+        "value": 1.0,
+        "contribution": 0.0442
+      },
+      {
+        "feature": "HighChol",
+        "value": 1.0,
+        "contribution": 0.0418
+      },
+      {
+        "feature": "Sex",
+        "value": 1.0,
+        "contribution": 0.0298
+      },
+      {
+        "feature": "Smoker",
+        "value": 1.0,
+        "contribution": 0.0265
+      },
+      {
+        "feature": "Diabetes",
+        "value": 2.0,
+        "contribution": 0.0222
+      },
+      {
+        "feature": "PhysHlth",
+        "value": 12.0,
+        "contribution": 0.0157
+      },
+      {
+        "feature": "NoDocbcCost",
+        "value": 1.0,
+        "contribution": 0.0094
+      },
+      {
+        "feature": "Education",
+        "value": 2.0,
+        "contribution": 0.0079
+      },
+      {
+        "feature": "Income",
+        "value": 5.0,
+        "contribution": 0.0049
+      },
+      {
+        "feature": "Stroke",
+        "value": 0.0,
+        "contribution": -0.0042
+      },
+      {
+        "feature": "AnyHealthcare",
+        "value": 1.0,
+        "contribution": 0.0013
+      },
+      {
+        "feature": "BMI",
+        "value": 21.0,
+        "contribution": 0.001
+      },
+      {
+        "feature": "PhysActivity",
+        "value": 1.0,
+        "contribution": -0.0009
+      },
+      {
+        "feature": "MentHlth",
+        "value": 0.0,
+        "contribution": -0.0005
+      },
+      {
+        "feature": "Fruits",
+        "value": 0.0,
+        "contribution": -0.0003
+      },
+      {
+        "feature": "Veggies",
+        "value": 1.0,
+        "contribution": 0.0001
+      },
+      {
+        "feature": "CholCheck",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "HvyAlcoholConsump",
+        "value": 0.0,
+        "contribution": 0.0
+      }
+    ],
+    "lime_explanation": [
+      {
+        "feature": "Stroke",
+        "value": 0.0,
+        "contribution": -0.1292
+      },
+      {
+        "feature": "GenHlth",
+        "value": 4.0,
+        "contribution": 0.1145
+      },
+      {
+        "feature": "Age",
+        "value": 11.0,
+        "contribution": 0.0693
+      },
+      {
+        "feature": "HighBP",
+        "value": 1.0,
+        "contribution": 0.0555
+      },
+      {
+        "feature": "DiffWalk",
+        "value": 1.0,
+        "contribution": 0.0317
+      },
+      {
+        "feature": "HighChol",
+        "value": 1.0,
+        "contribution": 0.0279
+      },
+      {
+        "feature": "Sex",
+        "value": 1.0,
+        "contribution": 0.0263
+      },
+      {
+        "feature": "PhysHlth",
+        "value": 12.0,
+        "contribution": 0.0127
+      },
+      {
+        "feature": "Smoker",
+        "value": 1.0,
+        "contribution": 0.012
+      },
+      {
+        "feature": "Income",
+        "value": 5.0,
+        "contribution": 0.0105
+      },
+      {
+        "feature": "Diabetes",
+        "value": 2.0,
+        "contribution": 0.0098
+      },
+      {
+        "feature": "BMI",
+        "value": 21.0,
+        "contribution": -0.0043
+      },
+      {
+        "feature": "Fruits",
+        "value": 0.0,
+        "contribution": 0.0041
+      },
+      {
+        "feature": "HvyAlcoholConsump",
+        "value": 0.0,
+        "contribution": 0.0041
+      },
+      {
+        "feature": "Education",
+        "value": 2.0,
+        "contribution": 0.0036
+      },
+      {
+        "feature": "NoDocbcCost",
+        "value": 1.0,
+        "contribution": 0.0025
+      },
+      {
+        "feature": "MentHlth",
+        "value": 0.0,
+        "contribution": 0.0014
+      },
+      {
+        "feature": "CholCheck",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "PhysActivity",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "Veggies",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "AnyHealthcare",
+        "value": 1.0,
+        "contribution": 0.0
+      }
+    ]
+  },
+  "borderline": {
+    "index": 1,
+    "title": "Borderline (Critical Decision Boundary)",
+    "profile": {
+      "HighBP": 1.0,
+      "HighChol": 1.0,
+      "CholCheck": 1.0,
+      "BMI": 33.0,
+      "Smoker": 0.0,
+      "Stroke": 0.0,
+      "Diabetes": 0.0,
+      "PhysActivity": 1.0,
+      "Fruits": 0.0,
+      "Veggies": 1.0,
+      "HvyAlcoholConsump": 0.0,
+      "AnyHealthcare": 0.0,
+      "NoDocbcCost": 0.0,
+      "GenHlth": 3.0,
+      "MentHlth": 4.0,
+      "PhysHlth": 7.0,
+      "DiffWalk": 0.0,
+      "Sex": 1.0,
+      "Age": 9.0,
+      "Education": 6.0,
+      "Income": 6.0
+    },
+    "actual": 0,
+    "probability": 0.1963,
+    "prediction": 0,
+    "threshold": 0.2,
+    "shap_explanation": [
+      {
+        "feature": "GenHlth",
+        "value": 3.0,
+        "contribution": 0.1277
+      },
+      {
+        "feature": "HighBP",
+        "value": 1.0,
+        "contribution": 0.1086
+      },
+      {
+        "feature": "Sex",
+        "value": 1.0,
+        "contribution": 0.0637
+      },
+      {
+        "feature": "Age",
+        "value": 9.0,
+        "contribution": 0.0588
+      },
+      {
+        "feature": "HighChol",
+        "value": 1.0,
+        "contribution": 0.055
+      },
+      {
+        "feature": "Smoker",
+        "value": 0.0,
+        "contribution": -0.0262
+      },
+      {
+        "feature": "MentHlth",
+        "value": 4.0,
+        "contribution": -0.0091
+      },
+      {
+        "feature": "PhysHlth",
+        "value": 7.0,
+        "contribution": 0.0071
+      },
+      {
+        "feature": "Stroke",
+        "value": 0.0,
+        "contribution": -0.006
+      },
+      {
+        "feature": "DiffWalk",
+        "value": 0.0,
+        "contribution": -0.0041
+      },
+      {
+        "feature": "BMI",
+        "value": 33.0,
+        "contribution": 0.0035
+      },
+      {
+        "feature": "Income",
+        "value": 6.0,
+        "contribution": -0.0034
+      },
+      {
+        "feature": "Diabetes",
+        "value": 0.0,
+        "contribution": -0.0024
+      },
+      {
+        "feature": "NoDocbcCost",
+        "value": 0.0,
+        "contribution": -0.0021
+      },
+      {
+        "feature": "AnyHealthcare",
+        "value": 0.0,
+        "contribution": -0.002
+      },
+      {
+        "feature": "PhysActivity",
+        "value": 1.0,
+        "contribution": -0.0017
+      },
+      {
+        "feature": "Fruits",
+        "value": 0.0,
+        "contribution": -0.0004
+      },
+      {
+        "feature": "Veggies",
+        "value": 1.0,
+        "contribution": 0.0002
+      },
+      {
+        "feature": "Education",
+        "value": 6.0,
+        "contribution": -0.0001
+      },
+      {
+        "feature": "CholCheck",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "HvyAlcoholConsump",
+        "value": 0.0,
+        "contribution": 0.0
+      }
+    ],
+    "lime_explanation": [
+      {
+        "feature": "Stroke",
+        "value": 0.0,
+        "contribution": -0.119
+      },
+      {
+        "feature": "HighBP",
+        "value": 1.0,
+        "contribution": 0.0567
+      },
+      {
+        "feature": "DiffWalk",
+        "value": 0.0,
+        "contribution": -0.0298
+      },
+      {
+        "feature": "Age",
+        "value": 9.0,
+        "contribution": 0.0274
+      },
+      {
+        "feature": "HighChol",
+        "value": 1.0,
+        "contribution": 0.0259
+      },
+      {
+        "feature": "Sex",
+        "value": 1.0,
+        "contribution": 0.0258
+      },
+      {
+        "feature": "GenHlth",
+        "value": 3.0,
+        "contribution": 0.024
+      },
+      {
+        "feature": "Smoker",
+        "value": 0.0,
+        "contribution": -0.0197
+      },
+      {
+        "feature": "Diabetes",
+        "value": 0.0,
+        "contribution": -0.0153
+      },
+      {
+        "feature": "HvyAlcoholConsump",
+        "value": 0.0,
+        "contribution": 0.0092
+      },
+      {
+        "feature": "PhysHlth",
+        "value": 7.0,
+        "contribution": 0.0075
+      },
+      {
+        "feature": "NoDocbcCost",
+        "value": 0.0,
+        "contribution": -0.0067
+      },
+      {
+        "feature": "Income",
+        "value": 6.0,
+        "contribution": 0.0063
+      },
+      {
+        "feature": "BMI",
+        "value": 33.0,
+        "contribution": -0.0041
+      },
+      {
+        "feature": "Fruits",
+        "value": 0.0,
+        "contribution": -0.0027
+      },
+      {
+        "feature": "Education",
+        "value": 6.0,
+        "contribution": 0.0025
+      },
+      {
+        "feature": "MentHlth",
+        "value": 4.0,
+        "contribution": -0.0012
+      },
+      {
+        "feature": "CholCheck",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "PhysActivity",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "Veggies",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "AnyHealthcare",
+        "value": 0.0,
+        "contribution": 0.0
+      }
+    ]
+  },
+  "extreme_high_risk": {
+    "index": 89,
+    "title": "Extreme High Risk (Multi-morbidity)",
+    "profile": {
+      "HighBP": 1.0,
+      "HighChol": 1.0,
+      "CholCheck": 1.0,
+      "BMI": 21.0,
+      "Smoker": 1.0,
+      "Stroke": 0.0,
+      "Diabetes": 2.0,
+      "PhysActivity": 1.0,
+      "Fruits": 0.0,
+      "Veggies": 1.0,
+      "HvyAlcoholConsump": 0.0,
+      "AnyHealthcare": 1.0,
+      "NoDocbcCost": 1.0,
+      "GenHlth": 4.0,
+      "MentHlth": 0.0,
+      "PhysHlth": 12.0,
+      "DiffWalk": 1.0,
+      "Sex": 1.0,
+      "Age": 11.0,
+      "Education": 2.0,
+      "Income": 5.0
+    },
+    "actual": 0,
+    "probability": 0.6667,
+    "prediction": 1,
+    "threshold": 0.2,
+    "shap_explanation": [
+      {
+        "feature": "GenHlth",
+        "value": 4.0,
+        "contribution": 0.2311
+      },
+      {
+        "feature": "Age",
+        "value": 11.0,
+        "contribution": 0.1214
+      },
+      {
+        "feature": "HighBP",
+        "value": 1.0,
+        "contribution": 0.0936
+      },
+      {
+        "feature": "DiffWalk",
+        "value": 1.0,
+        "contribution": 0.0442
+      },
+      {
+        "feature": "HighChol",
+        "value": 1.0,
+        "contribution": 0.0418
+      },
+      {
+        "feature": "Sex",
+        "value": 1.0,
+        "contribution": 0.0298
+      },
+      {
+        "feature": "Smoker",
+        "value": 1.0,
+        "contribution": 0.0265
+      },
+      {
+        "feature": "Diabetes",
+        "value": 2.0,
+        "contribution": 0.0222
+      },
+      {
+        "feature": "PhysHlth",
+        "value": 12.0,
+        "contribution": 0.0157
+      },
+      {
+        "feature": "NoDocbcCost",
+        "value": 1.0,
+        "contribution": 0.0094
+      },
+      {
+        "feature": "Education",
+        "value": 2.0,
+        "contribution": 0.0079
+      },
+      {
+        "feature": "Income",
+        "value": 5.0,
+        "contribution": 0.0049
+      },
+      {
+        "feature": "Stroke",
+        "value": 0.0,
+        "contribution": -0.0042
+      },
+      {
+        "feature": "AnyHealthcare",
+        "value": 1.0,
+        "contribution": 0.0013
+      },
+      {
+        "feature": "BMI",
+        "value": 21.0,
+        "contribution": 0.001
+      },
+      {
+        "feature": "PhysActivity",
+        "value": 1.0,
+        "contribution": -0.0009
+      },
+      {
+        "feature": "MentHlth",
+        "value": 0.0,
+        "contribution": -0.0005
+      },
+      {
+        "feature": "Fruits",
+        "value": 0.0,
+        "contribution": -0.0003
+      },
+      {
+        "feature": "Veggies",
+        "value": 1.0,
+        "contribution": 0.0001
+      },
+      {
+        "feature": "CholCheck",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "HvyAlcoholConsump",
+        "value": 0.0,
+        "contribution": 0.0
+      }
+    ],
+    "lime_explanation": [
+      {
+        "feature": "Stroke",
+        "value": 0.0,
+        "contribution": -0.1192
+      },
+      {
+        "feature": "GenHlth",
+        "value": 4.0,
+        "contribution": 0.108
+      },
+      {
+        "feature": "Age",
+        "value": 11.0,
+        "contribution": 0.0754
+      },
+      {
+        "feature": "HighBP",
+        "value": 1.0,
+        "contribution": 0.0506
+      },
+      {
+        "feature": "HighChol",
+        "value": 1.0,
+        "contribution": 0.0303
+      },
+      {
+        "feature": "DiffWalk",
+        "value": 1.0,
+        "contribution": 0.0264
+      },
+      {
+        "feature": "Sex",
+        "value": 1.0,
+        "contribution": 0.0256
+      },
+      {
+        "feature": "Smoker",
+        "value": 1.0,
+        "contribution": 0.0247
+      },
+      {
+        "feature": "PhysHlth",
+        "value": 12.0,
+        "contribution": 0.015
+      },
+      {
+        "feature": "NoDocbcCost",
+        "value": 1.0,
+        "contribution": 0.0107
+      },
+      {
+        "feature": "Diabetes",
+        "value": 2.0,
+        "contribution": 0.0102
+      },
+      {
+        "feature": "MentHlth",
+        "value": 0.0,
+        "contribution": 0.0091
+      },
+      {
+        "feature": "BMI",
+        "value": 21.0,
+        "contribution": -0.0084
+      },
+      {
+        "feature": "Income",
+        "value": 5.0,
+        "contribution": 0.0072
+      },
+      {
+        "feature": "HvyAlcoholConsump",
+        "value": 0.0,
+        "contribution": 0.0029
+      },
+      {
+        "feature": "Fruits",
+        "value": 0.0,
+        "contribution": 0.0027
+      },
+      {
+        "feature": "Education",
+        "value": 2.0,
+        "contribution": 0.0018
+      },
+      {
+        "feature": "CholCheck",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "PhysActivity",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "Veggies",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "AnyHealthcare",
+        "value": 1.0,
+        "contribution": 0.0
+      }
+    ]
+  },
+  "young_high_risk": {
+    "index": 973,
+    "title": "Young but High Risk (Early Warning)",
+    "profile": {
+      "HighBP": 0.0,
+      "HighChol": 0.0,
+      "CholCheck": 1.0,
+      "BMI": 39.0,
+      "Smoker": 0.0,
+      "Stroke": 1.0,
+      "Diabetes": 1.0,
+      "PhysActivity": 1.0,
+      "Fruits": 1.0,
+      "Veggies": 0.0,
+      "HvyAlcoholConsump": 0.0,
+      "AnyHealthcare": 1.0,
+      "NoDocbcCost": 0.0,
+      "GenHlth": 4.0,
+      "MentHlth": 0.0,
+      "PhysHlth": 0.0,
+      "DiffWalk": 0.0,
+      "Sex": 0.0,
+      "Age": 3.0,
+      "Education": 3.0,
+      "Income": 3.0
+    },
+    "actual": 0,
+    "probability": 0.2545,
+    "prediction": 1,
+    "threshold": 0.2,
+    "shap_explanation": [
+      {
+        "feature": "GenHlth",
+        "value": 4.0,
+        "contribution": 0.3512
+      },
+      {
+        "feature": "Stroke",
+        "value": 1.0,
+        "contribution": 0.3325
+      },
+      {
+        "feature": "Age",
+        "value": 3.0,
+        "contribution": -0.1057
+      },
+      {
+        "feature": "HighBP",
+        "value": 0.0,
+        "contribution": -0.0266
+      },
+      {
+        "feature": "Sex",
+        "value": 0.0,
+        "contribution": -0.0263
+      },
+      {
+        "feature": "Education",
+        "value": 3.0,
+        "contribution": 0.0183
+      },
+      {
+        "feature": "DiffWalk",
+        "value": 0.0,
+        "contribution": -0.018
+      },
+      {
+        "feature": "Veggies",
+        "value": 0.0,
+        "contribution": 0.0136
+      },
+      {
+        "feature": "Smoker",
+        "value": 0.0,
+        "contribution": -0.01
+      },
+      {
+        "feature": "Diabetes",
+        "value": 1.0,
+        "contribution": -0.0085
+      },
+      {
+        "feature": "PhysHlth",
+        "value": 0.0,
+        "contribution": -0.0055
+      },
+      {
+        "feature": "Income",
+        "value": 3.0,
+        "contribution": -0.0055
+      },
+      {
+        "feature": "PhysActivity",
+        "value": 1.0,
+        "contribution": -0.0014
+      },
+      {
+        "feature": "BMI",
+        "value": 39.0,
+        "contribution": 0.0013
+      },
+      {
+        "feature": "AnyHealthcare",
+        "value": 1.0,
+        "contribution": -0.0011
+      },
+      {
+        "feature": "NoDocbcCost",
+        "value": 0.0,
+        "contribution": -0.0005
+      },
+      {
+        "feature": "HighChol",
+        "value": 0.0,
+        "contribution": -0.0002
+      },
+      {
+        "feature": "MentHlth",
+        "value": 0.0,
+        "contribution": -0.0002
+      },
+      {
+        "feature": "CholCheck",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "Fruits",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "HvyAlcoholConsump",
+        "value": 0.0,
+        "contribution": 0.0
+      }
+    ],
+    "lime_explanation": [
+      {
+        "feature": "GenHlth",
+        "value": 4.0,
+        "contribution": 0.1164
+      },
+      {
+        "feature": "Stroke",
+        "value": 1.0,
+        "contribution": 0.0924
+      },
+      {
+        "feature": "Age",
+        "value": 3.0,
+        "contribution": -0.0579
+      },
+      {
+        "feature": "HighBP",
+        "value": 0.0,
+        "contribution": -0.0469
+      },
+      {
+        "feature": "Sex",
+        "value": 0.0,
+        "contribution": -0.0278
+      },
+      {
+        "feature": "HighChol",
+        "value": 0.0,
+        "contribution": -0.0266
+      },
+      {
+        "feature": "DiffWalk",
+        "value": 0.0,
+        "contribution": -0.0223
+      },
+      {
+        "feature": "Smoker",
+        "value": 0.0,
+        "contribution": -0.0176
+      },
+      {
+        "feature": "Diabetes",
+        "value": 1.0,
+        "contribution": 0.0088
+      },
+      {
+        "feature": "MentHlth",
+        "value": 0.0,
+        "contribution": 0.0087
+      },
+      {
+        "feature": "PhysHlth",
+        "value": 0.0,
+        "contribution": -0.0076
+      },
+      {
+        "feature": "Income",
+        "value": 3.0,
+        "contribution": 0.007
+      },
+      {
+        "feature": "NoDocbcCost",
+        "value": 0.0,
+        "contribution": -0.0032
+      },
+      {
+        "feature": "HvyAlcoholConsump",
+        "value": 0.0,
+        "contribution": 0.0019
+      },
+      {
+        "feature": "Education",
+        "value": 3.0,
+        "contribution": 0.0017
+      },
+      {
+        "feature": "BMI",
+        "value": 39.0,
+        "contribution": 0.0009
+      },
+      {
+        "feature": "Fruits",
+        "value": 1.0,
+        "contribution": -0.0003
+      },
+      {
+        "feature": "CholCheck",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "PhysActivity",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "Veggies",
+        "value": 0.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "AnyHealthcare",
+        "value": 1.0,
+        "contribution": 0.0
+      }
+    ]
+  },
+  "old_low_risk": {
+    "index": 41,
+    "title": "Older but Low Risk (Resilient Health)",
+    "profile": {
+      "HighBP": 0.0,
+      "HighChol": 1.0,
+      "CholCheck": 1.0,
+      "BMI": 26.0,
+      "Smoker": 1.0,
+      "Stroke": 0.0,
+      "Diabetes": 0.0,
+      "PhysActivity": 1.0,
+      "Fruits": 0.0,
+      "Veggies": 1.0,
+      "HvyAlcoholConsump": 0.0,
+      "AnyHealthcare": 1.0,
+      "NoDocbcCost": 0.0,
+      "GenHlth": 1.0,
+      "MentHlth": 0.0,
+      "PhysHlth": 0.0,
+      "DiffWalk": 0.0,
+      "Sex": 0.0,
+      "Age": 12.0,
+      "Education": 5.0,
+      "Income": 6.0
+    },
+    "actual": 0,
+    "probability": 0.0047,
+    "prediction": 0,
+    "threshold": 0.2,
+    "shap_explanation": [
+      {
+        "feature": "GenHlth",
+        "value": 1.0,
+        "contribution": -0.2521
+      },
+      {
+        "feature": "Age",
+        "value": 12.0,
+        "contribution": 0.1554
+      },
+      {
+        "feature": "HighBP",
+        "value": 0.0,
+        "contribution": -0.1069
+      },
+      {
+        "feature": "Sex",
+        "value": 0.0,
+        "contribution": -0.0549
+      },
+      {
+        "feature": "HighChol",
+        "value": 1.0,
+        "contribution": 0.0296
+      },
+      {
+        "feature": "Smoker",
+        "value": 1.0,
+        "contribution": 0.0133
+      },
+      {
+        "feature": "Stroke",
+        "value": 0.0,
+        "contribution": -0.0059
+      },
+      {
+        "feature": "DiffWalk",
+        "value": 0.0,
+        "contribution": -0.0045
+      },
+      {
+        "feature": "PhysHlth",
+        "value": 0.0,
+        "contribution": -0.0025
+      },
+      {
+        "feature": "Diabetes",
+        "value": 0.0,
+        "contribution": -0.0019
+      },
+      {
+        "feature": "MentHlth",
+        "value": 0.0,
+        "contribution": -0.0014
+      },
+      {
+        "feature": "BMI",
+        "value": 26.0,
+        "contribution": 0.0013
+      },
+      {
+        "feature": "Income",
+        "value": 6.0,
+        "contribution": -0.001
+      },
+      {
+        "feature": "NoDocbcCost",
+        "value": 0.0,
+        "contribution": -0.0009
+      },
+      {
+        "feature": "PhysActivity",
+        "value": 1.0,
+        "contribution": -0.0005
+      },
+      {
+        "feature": "Education",
+        "value": 5.0,
+        "contribution": -0.0003
+      },
+      {
+        "feature": "Fruits",
+        "value": 0.0,
+        "contribution": -0.0001
+      },
+      {
+        "feature": "Veggies",
+        "value": 1.0,
+        "contribution": -0.0001
+      },
+      {
+        "feature": "CholCheck",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "HvyAlcoholConsump",
+        "value": 0.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "AnyHealthcare",
+        "value": 1.0,
+        "contribution": 0.0
+      }
+    ],
+    "lime_explanation": [
+      {
+        "feature": "GenHlth",
+        "value": 1.0,
+        "contribution": -0.078
+      },
+      {
+        "feature": "Stroke",
+        "value": 0.0,
+        "contribution": -0.069
+      },
+      {
+        "feature": "Age",
+        "value": 12.0,
+        "contribution": 0.0645
+      },
+      {
+        "feature": "HighBP",
+        "value": 0.0,
+        "contribution": -0.0548
+      },
+      {
+        "feature": "HighChol",
+        "value": 1.0,
+        "contribution": 0.0286
+      },
+      {
+        "feature": "Sex",
+        "value": 0.0,
+        "contribution": -0.0218
+      },
+      {
+        "feature": "Diabetes",
+        "value": 0.0,
+        "contribution": -0.0173
+      },
+      {
+        "feature": "DiffWalk",
+        "value": 0.0,
+        "contribution": -0.0139
+      },
+      {
+        "feature": "Smoker",
+        "value": 1.0,
+        "contribution": 0.012
+      },
+      {
+        "feature": "PhysHlth",
+        "value": 0.0,
+        "contribution": -0.0044
+      },
+      {
+        "feature": "HvyAlcoholConsump",
+        "value": 0.0,
+        "contribution": 0.0038
+      },
+      {
+        "feature": "BMI",
+        "value": 26.0,
+        "contribution": 0.0026
+      },
+      {
+        "feature": "NoDocbcCost",
+        "value": 0.0,
+        "contribution": -0.0024
+      },
+      {
+        "feature": "Fruits",
+        "value": 0.0,
+        "contribution": -0.0011
+      },
+      {
+        "feature": "MentHlth",
+        "value": 0.0,
+        "contribution": 0.0006
+      },
+      {
+        "feature": "Education",
+        "value": 5.0,
+        "contribution": 0.0005
+      },
+      {
+        "feature": "Income",
+        "value": 6.0,
+        "contribution": -0.0004
+      },
+      {
+        "feature": "CholCheck",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "PhysActivity",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "Veggies",
+        "value": 1.0,
+        "contribution": 0.0
+      },
+      {
+        "feature": "AnyHealthcare",
+        "value": 1.0,
+        "contribution": 0.0
+      }
+    ]
+  }
+}

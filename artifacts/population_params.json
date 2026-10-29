@@ -1,0 +1,95 @@
+{
+  "modifiable_features": [
+    "BMI",
+    "Smoker",
+    "PhysActivity",
+    "Fruits",
+    "Veggies",
+    "HvyAlcoholConsump",
+    "HighBP",
+    "HighChol",
+    "Diabetes",
+    "CholCheck"
+  ],
+  "fixed_features": [
+    "Age",
+    "Sex",
+    "Education",
+    "Income",
+    "Stroke",
+    "DiffWalk"
+  ],
+  "prevalences": {
+    "BMI": {
+      "mean": 28.32,
+      "median": 27.0,
+      "std": 6.63
+    },
+    "Smoker": {
+      "prevalence": 0.4421,
+      "breakdown": {
+        "0.0": 0.5579,
+        "1.0": 0.4421
+      }
+    },
+    "PhysActivity": {
+      "prevalence": 0.7635,
+      "breakdown": {
+        "1.0": 0.7635,
+        "0.0": 0.2365
+      }
+    },
+    "Fruits": {
+      "prevalence": 0.6299,
+      "breakdown": {
+        "1.0": 0.6299,
+        "0.0": 0.3701
+      }
+    },
+    "Veggies": {
+      "prevalence": 0.8155,
+      "breakdown": {
+        "1.0": 0.8155,
+        "0.0": 0.1845
+      }
+    },
+    "HvyAlcoholConsump": {
+      "prevalence": 0.0571,
+      "breakdown": {
+        "0.0": 0.9429,
+        "1.0": 0.0571
+      }
+    },
+    "HighBP": {
+      "prevalence": 0.4215,
+      "breakdown": {
+        "0.0": 0.5785,
+        "1.0": 0.4215
+      }
+    },
+    "HighChol": {
+      "prevalence": 0.4211,
+      "breakdown": {
+        "0.0": 0.5789,
+        "1.0": 0.4211
+      }
+    },
+    "Diabetes": {
+      "prevalence": 0.1583,
+      "breakdown": {
+        "0.0": 0.8417,
+        "2.0": 0.1391,
+        "1.0": 0.0193
+      }
+    },
+    "CholCheck": {
+      "prevalence": 0.9621,
+      "breakdown": {
+        "1.0": 0.9621,
+        "0.0": 0.0379
+      }
+    }
+  },
+  "overall_observed_risk": 0.0942,
+  "overall_predicted_risk": 0.1036
+}
